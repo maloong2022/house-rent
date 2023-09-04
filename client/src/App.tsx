@@ -45,7 +45,6 @@ import {
 import { Reviews } from "pages/review";
 import { Messages } from "pages/message";
 import MyProfile from "pages/my-profile";
-
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
   const token = localStorage.getItem("token");
@@ -66,7 +65,7 @@ function App() {
       const profileObj = credential ? parseJwt(credential) : null;
 
       if (profileObj) {
-        const response = await fetch("http://localhost:8080/api/v1/users", {
+        const response = await fetch("https://house-rent-6mmp.onrender.com/api/v1/users", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -163,7 +162,7 @@ function App() {
           <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
           <RefineSnackbarProvider>
             <Refine
-              dataProvider={dataProvider("http://localhost:8080/api/v1")}
+              dataProvider={dataProvider("https://house-rent-6mmp.onrender.com/api/v1")}
               notificationProvider={notificationProvider}
               routerProvider={routerBindings}
               authProvider={authProvider}
